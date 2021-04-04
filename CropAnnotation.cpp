@@ -10,7 +10,7 @@ using namespace cv;
 
 
 
-void removeDupWord(string str, string imgPath, string savePath, int count)
+void CropAndSaveImg(string str, string imgPath, string savePath, int count)
 {
 	// Used to split string around spaces.
 
@@ -91,7 +91,7 @@ int main() {
 				while (getline(TxtFile, line))
 				{
 					
-					removeDupWord(line,imgs[i],DestPath,count);
+					CropAndSaveImg(line,imgs[i],DestPath,count);
 					++count;
 				}
 				
