@@ -10,7 +10,7 @@ using namespace cv;
 
 
 
-void CropAndSaveImg(string str, string imgPath, string savePath, int count)
+void CropAndSaveImg(string str, string imgPath, string savePath, int count, string NPrefix)
 {
 	// Used to split string around spaces.
 
@@ -49,7 +49,7 @@ void CropAndSaveImg(string str, string imgPath, string savePath, int count)
 
 	CropImg = OImag(ROI);
 
-	imwrite(savePath+"\\"+to_string(count)+".jpg", CropImg);
+	imwrite(savePath+"\\"+NPrefix+to_string(count)+".jpg", CropImg);
 
 	cout << x << endl << y << endl << CropWidth << endl << CropHeight << endl << ClassId << endl;
 
@@ -65,6 +65,10 @@ int main() {
 	cout << endl << "Enter Destination Path: " << endl;
 	string DestPath;
 	cin >> DestPath;
+
+	cout << endl << "Enter Name Prefix: " << endl;
+	string NPrefix;
+	cin >> NPrefix;
 
 	vector<string> imgs;
 	vector<string> Txts;
@@ -91,7 +95,7 @@ int main() {
 				while (getline(TxtFile, line))
 				{
 					
-					CropAndSaveImg(line,imgs[i],DestPath,count);
+					CropAndSaveImg(line,imgs[i],DestPath,count,NPrefix);
 					++count;
 				}
 				
